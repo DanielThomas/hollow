@@ -21,7 +21,7 @@ import com.netflix.hollow.api.codegen.CodeGeneratorConfig;
 import com.netflix.hollow.api.codegen.HollowAPIGenerator;
 import com.netflix.hollow.api.consumer.HollowConsumer;
 import com.netflix.hollow.api.consumer.index.AbstractHollowUniqueKeyIndex;
-import com.netflix.hollow.api.consumer.index.UniqueKeyIndex;
+import com.netflix.hollow.api.consumer.index.HollowUniqueKeyIndex;
 import com.netflix.hollow.api.custom.HollowAPI;
 import com.netflix.hollow.core.HollowDataset;
 import com.netflix.hollow.core.schema.HollowObjectSchema;
@@ -62,14 +62,14 @@ public class HollowUniqueKeyIndexGenerator extends HollowIndexGenerator {
         appendPackageAndCommonImports(builder, apiClassname, Arrays.<HollowSchema>asList(schema));
         builder.append("import " + HollowConsumer.class.getName() + ";\n");
         builder.append("import " + AbstractHollowUniqueKeyIndex.class.getName() + ";\n");
-        builder.append("import " + UniqueKeyIndex.class.getName() + ";\n");
+        builder.append("import " + HollowUniqueKeyIndex.class.getName() + ";\n");
         if (isGenSimpleConstructor)
             builder.append("import " + HollowObjectSchema.class.getName() + ";\n");
 
         builder.append("\n@SuppressWarnings(\"all\")\n");
         builder.append("public class " + className + " extends " + AbstractHollowUniqueKeyIndex.class.getSimpleName() + "<" + apiClassname + ", " + hollowImplClassname(type) + "> ");
         if (isImplementsUniqueKeyIndex) {
-            builder.append("implements " + UniqueKeyIndex.class.getSimpleName() + "<" + apiClassname + ", " + hollowImplClassname(type) + "> ");
+            builder.append("implements " + HollowUniqueKeyIndex.class.getSimpleName() + "<" + apiClassname + ", " + hollowImplClassname(type) + "> ");
         }
         builder.append("{\n\n");
         {
