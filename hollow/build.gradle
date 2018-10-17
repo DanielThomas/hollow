@@ -13,6 +13,9 @@ apply plugin: 'java'
 apply plugin: 'me.champeau.gradle.jmh'
 
 dependencies {
+    compile 'com.sangupta:murmur:1.0.0'
+    compile 'com.google.guava:guava:26.0-jre'
+
     testCompile project(":hollow-test")
     testCompile 'junit:junit:4.11'
     testCompile 'org.mockito:mockito-core:2.15.0'

@@ -24,7 +24,7 @@ import com.netflix.hollow.core.memory.ByteData;
 import com.netflix.hollow.core.memory.ByteDataBuffer;
 
 public class HashCodes {
-    private static final int MURMURHASH_SEED = 0xeab524b9;
+    public static final int MURMURHASH_SEED = 0xeab524b9;
 
     public static int hashCode(ByteDataBuffer data) {
         return hashCode(data.getUnderlyingArray(), 0, (int) data.length());
